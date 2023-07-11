@@ -1,4 +1,4 @@
 from django.shortcuts import render, HttpResponse
 
-def index(requese):
-    return HttpResponse("Hello, world. You're at the polls index.")
+def index(request):
+    return render(request, 'main/index.html')
