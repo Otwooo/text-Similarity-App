@@ -1,3 +1,180 @@
-<h2>추출된 명사</h2>
+<h2>텍스트 분석</h2>
 
-{{TF}}
+디자인 도와주실 분?
+
+<table
+    border="1"
+    width="50%"
+    height="200"
+    cellspacing="5">
+    <caption>TF(Term Frequency) 계산</caption>
+    <thead>
+        <tr align="center" bgcolor="white">
+            <td>No</td>
+            {% for word in TF_head %}
+                <th>{{word}}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for noun in TF %}
+        <tr align="center" bgcolor="white">
+            <td>문장 {{forloop.counter}}</td>
+            {% for word in noun %}
+                <td>{{word}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<br>
+<br>
+
+<table
+    border="1"
+    width="50%"
+    height="200"
+    cellspacing="5">
+    <caption>TF-IDF(Term Frequency-Inverse Document Frequency) 계산</caption>
+    <thead>
+        <tr align="center" bgcolor="white">
+            <td>No</td>
+            {% for word in TF_head %}
+                <th>{{word}}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for noun in TF_IDF %}
+        <tr align="center" bgcolor="white">
+            <td>문장 {{forloop.counter}}</td>
+            {% for word in noun %}
+                <td>{{word}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<br>
+<br>
+
+<table
+    border="1"
+    width="50%"
+    height="200"
+    cellspacing="5">
+    <caption>코사인 유사도</caption>
+    <thead>
+        <tr align="center" bgcolor="white">
+            <td>No</td>
+            {% for word in cos %}
+                <th>문장 {{forloop.counter}}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for noun in cos %}
+        <tr align="center" bgcolor="white">
+            <td>문장 {{forloop.counter}}</td>
+            {% for word in noun %}
+                <td>{{word}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<br>
+<br>
+
+<table
+    border="1"
+    width="50%"
+    height="200"
+    cellspacing="5">
+    <caption>자카드 유사도</caption>
+    <thead>
+        <tr align="center" bgcolor="white">
+            <td>No</td>
+            {% for word in jac %}
+                <th>문장 {{forloop.counter}}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for noun in jac %}
+        <tr align="center" bgcolor="white">
+            <td>문장 {{forloop.counter}}</td>
+            {% for word in noun %}
+                <td>{{word}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<br>
+<br>
+
+<table
+    border="1"
+    width="50%"
+    height="200"
+    cellspacing="5">
+    <caption>유클리드 유사도</caption>
+    <thead>
+        <tr align="center" bgcolor="white">
+            <td>No</td>
+            {% for word in Euc %}
+                <th>문장 {{forloop.counter}}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for noun in Euc %}
+        <tr align="center" bgcolor="white">
+            <td>문장 {{forloop.counter}}</td>
+            {% for word in noun %}
+                <td>{{word}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<br>
+<br>
+
+<table
+    border="1"
+    width="50%"
+    height="200"
+    cellspacing="5">
+    <caption>맨하탄 유사도</caption>
+    <thead>
+        <tr align="center" bgcolor="white">
+            <td>No</td>
+            {% for word in man %}
+                <th>문장 {{forloop.counter}}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for noun in man %}
+        <tr align="center" bgcolor="white">
+            <td>문장 {{forloop.counter}}</td>
+            {% for word in noun %}
+                <td>{{word}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

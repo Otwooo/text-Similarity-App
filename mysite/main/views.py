@@ -1,13 +1,26 @@
 from django.shortcuts import render, HttpResponse
 from . import helpers
+import copy
 
 def index(request):
     return render(request, 'main/index.html')
 
 def result(request):
-    s = "텍스트 전처리는 풀고자 하는 문제의 용도에 맞게 텍스트를 사전에 처리하는 작업입니다. 요리를 할 때 재료를 제대로 손질하지 않으면, 요리가 엉망이 되는 것처럼 텍스트에 제대로 전처리를 하지 않으면 뒤에서 배울 자연어 처리 기법들이 제대로 동작하지 않습니다. 이번 챕터에서는 텍스트를 위한 다양한 전처리 방법들에 대해서 다룹니다."
-    pre1 = helpers.sentence_classification(s)
-    pre2 = helpers.noun_extraction(pre1)   
-    TF = helpers.cal_TF(pre2) 
+    s = request.POST.get('text')    
+    pre1 = helpers.sentence_classification(s)    
+    noun = helpers.noun_extraction(pre1)    
+    TF, TF_head = helpers.cal_TF(noun)             
+    temp_TF = copy.deepcopy(TF)
+    TF_IDF = helpers.cal_TF_IDF(noun, temp_TF, TF_head)
+    cos = helpers.cosine_sim(TF) 
+    jac = helpers.jaccard(TF)
+    Euc = helpers.Euclidean(TF)
+    man = helpers.manhattan(TF)
 
-    return render(request, 'main/result.html', {"TF":TF})
+    print_TF = []
+    for i in TF:
+        print_TF.append(i[0:31])
+    print_TF_IDF = []
+    for i in TF:
+        print_TF_IDF.append(i[0:31])
+    return render(request, 'main/result.html', {"TF":print_TF, "TF_head":TF_head[0:31], "TF_IDF":print_TF_IDF, "cos":cos, "jac":jac, "Euc":Euc, "man":man})    
